@@ -32,6 +32,7 @@ import math
 import warnings
 from typing import Iterable, Optional
 import QSIP_solver_neo as solver
+from cutting_plane_qsip import solve_qsip_cutting_plane
 
 import numpy as np
 from scipy.stats import binom
@@ -142,20 +143,10 @@ def opt_H_via_solver(t: int, r: float, N: int, K: int,
 
     try:
         # neo solver returns array length K+1; we want length N
-        H_full = solver.solve_qsip_adaptive_scipy(
+        H_full = solve_qsip_cutting_plane(
             t=float(t),
             r=float(r),
-            K=int(N),          # same convention as old code: use N as truncation
-            p_init=161,
-            q_init=161,
-            eps=1e-10,
-            tau1=1e-4,
-            tau2=1e-4,
-            outer_iters=4,
-            x0=None,
-            maxiter_inner=600,
-            refine_mode="halve",
-            p0=0.0
+            K=int(N)
         )
 
         if progress is not None:
