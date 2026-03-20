@@ -114,7 +114,7 @@ def plot_one(ax, data: dict) -> None:
         ax.plot(perc, mean["SGT"], "s-", ms=ms, lw=lw, label="SGT")
 
     if include.get("TRIV", False):
-        ax.plot(perc, mean["triv"], "^--", ms=ms, lw=lw, alpha=0.8, label="Trivial")
+        ax.plot(perc, mean["triv"], "^--", ms=ms, lw=lw, alpha=0.8, label="Trivial", color="C3")
 
     if include.get("RATIO", False):
         ax.plot(perc, mean["ratio"], "x-", ms=ms, lw=lw, label=r"Ratio-$\alpha$")
