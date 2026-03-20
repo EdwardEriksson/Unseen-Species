@@ -8,7 +8,7 @@ from collections import defaultdict
 from matplotlib.ticker import LogFormatterMathtext
 
 LABELS = [
-    "Our linear estimator",
+    r"Our linear estimator, $H^{*}$",
     "SGT, our analysis",
     "SGT, their analysis",
     "Null-estimator",
@@ -82,10 +82,10 @@ def plot_comparison_grid(vs_t_csv="rmse_vs_t.csv",
             continue
         t = d["t"]
 
-        h1 = _scatter_masked(ax, t, d["sqrt_star"], label=LABELS[0], marker="o",s=70)
-        h2 = _scatter_masked(ax, t, d["sqrt_HO"],   label=LABELS[1], marker="s",s=70)
-        h3 = _scatter_masked(ax, t, d["sqrt_f"],    label=LABELS[2], marker="^",s=70)
-        h4 = _scatter_masked(ax, t, d["sqrt_g"],    label=LABELS[3], marker="x",s=70)
+        h1 = _scatter_masked(ax, t, d["sqrt_star"], label=LABELS[0], marker="o",s=70, color="C0")
+        h2 = _scatter_masked(ax, t, d["sqrt_HO"],   label=LABELS[1], marker="s",s=70, color="C1")
+        h3 = _scatter_masked(ax, t, d["sqrt_f"],    label=LABELS[2], marker="^",s=70, color="C2")
+        h4 = _scatter_masked(ax, t, d["sqrt_g"],    label=LABELS[3], marker="x",s=70, color="C3")
 
         ax.set_xscale("log")
         ax.set_yscale("log")
@@ -110,10 +110,10 @@ def plot_comparison_grid(vs_t_csv="rmse_vs_t.csv",
             continue
         r = d["r"]
 
-        ax.scatter(r, d["sqrt_star"], label=LABELS[0], marker="o",s=70)
-        ax.scatter(r, d["sqrt_HO"],   label=LABELS[1], marker="s",s=70)
-        ax.scatter(r, d["sqrt_f"],    label=LABELS[2], marker="^",s=70)
-        ax.scatter(r, d["sqrt_g"],    label=LABELS[3], marker="x",s=70)
+        ax.scatter(r, d["sqrt_star"], label=LABELS[0], marker="o",s=70, color="C0")
+        ax.scatter(r, d["sqrt_HO"],   label=LABELS[1], marker="s",s=70, color="C1")
+        ax.scatter(r, d["sqrt_f"],    label=LABELS[2], marker="^",s=70, color="C2")
+        ax.scatter(r, d["sqrt_g"],    label=LABELS[3], marker="x",s=70, color="C3")
 
         ax.set_xlabel("r",fontsize=20)
         t_label = int(tval) if float(tval).is_integer() else tval
